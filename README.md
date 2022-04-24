@@ -45,6 +45,9 @@ Como podemos ver, tenemos un asunto, que será el "título" del proyecto, una br
 9. Una vez el Bot (sí, un bot, antes lo hacía un humano y tardaba un par de días) valida todo, se marca la incidencia como resuelta y ya podremos acceder a nexus.
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164993587-818dc6af-005b-487b-b4d3-48b1a71ab0cc.png">
 
+Como vemos, el bot nos indica dónde debemos acceder para gestionar nuestros artifacts.
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164993695-1f98eaa8-d657-4ae7-96b7-90bde50ed8cc.png">
+
 
 Hasta este punto, tenemos la primera fase de la creación de un proyecto de librería disponible para su uso a través de MavenCentral.
 
