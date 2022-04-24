@@ -55,8 +55,8 @@ Hasta este punto, tenemos la primera fase de la creación de un proyecto de libr
 
 La segunda fase consiste en preparar nuestro recien creado proyecto para recibir los aar, POM, etc... Recordemos que MavenCentral está diseñado para Maven (que raro, ¿no?), por lo que tendremos nuestros artifacts, con todo lo que ello implica (POM, Paquetes binarios, Código, Documentación, etc, si procede).
 
-Para comenzar con esta segunda fase, accederemos a la url:
-https://oss.sonatype.org/#welcome
+Para comenzar con esta segunda fase, accederemos a la url que nos propone en bot, en mi caso:
+https://s01.oss.sonatype.org/#welcome
 
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164992425-1da31638-95f4-4e5e-84bd-652379c878e0.png">
 
@@ -66,7 +66,7 @@ A continuación, los pasos a seguir para preparar nuestro artifact disponible en
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164992477-66d9bd05-a993-462d-a54e-7b5b225c0896.png">
 
 2. Utilizaremos las **mismas credenciales** que en la sección anterior. 
-![image](https://user-images.githubusercontent.com/103461358/164992702-0375e39b-463e-458e-83da-c47b0b338ee8.png)
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164993862-9c409df2-8931-4960-b3ea-fc55aedce598.png">
 
 **Importante**: Si intentamos iniciar sesión antes de que se nos haya creado nuestro proyecto (la incidencia no se haya dado por finalizada), se mostrará el siguiente error:
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164992552-5b9e5fba-d320-42f6-891b-9bc8d17dc61c.png">
