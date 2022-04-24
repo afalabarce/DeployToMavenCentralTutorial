@@ -48,6 +48,8 @@ Como podemos ver, tenemos un asunto, que será el "título" del proyecto, una br
 Como vemos, el bot nos indica dónde debemos acceder para gestionar nuestros artifacts.
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164993695-1f98eaa8-d657-4ae7-96b7-90bde50ed8cc.png">
 
+Además se nos proporciona la siguiente url, con información de interés:
+https://central.sonatype.org/publish/publish-guide/#deployment
 
 Hasta este punto, tenemos la primera fase de la creación de un proyecto de librería disponible para su uso a través de MavenCentral.
 
