@@ -39,7 +39,7 @@ Como podemos ver, tenemos un asunto, que será el "título" del proyecto, una br
 8.  Por último, pulsaremos sobre **Crear**, a fin de que se genere la incidencia y nos creen nuestro nuevo proyecto de alojamiento de artifacts. Nos aparece la información necesaria de la incidencia. Cuando esté solucionada, esto es, nuestro proyecto creado, se nos notificará por email.
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164992139-70811e7b-f375-4cbc-b067-e972808656fa.png">
 
-**Nota Importante**: Ha cambiado el criterio para asignaciones de GroupIds para GitHub, se nos notifica, por lo que debemos modificar el GroupId de nuestra incidencia.
+**Nota Importante**: Ha cambiado el criterio para asignaciones de GroupIds para GitHub, se nos notifica, por lo que debemos modificar el GroupId de nuestra incidencia, y crear un repo en nuestra cuenta de GitHub con el código que nos propone el bot. En cuanto lo realicemos, la incidencia pasa a abierta.
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164993088-4c8a4efd-412a-4c0d-83aa-1c6ad34fa3ad.png">
 
 
