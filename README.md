@@ -1,1 +1,43 @@
 # DeployToMavenCentralTutorial
+
+En este repo voy a intentar explicar de la forma más sencilla posible la creación de un proyecto de librería para android enfocado a su despliegue en MavenCentral, a fin de que esté disponible en el buscador de paquetes de Android Studio.
+
+Para ganar tiempo, y dejar el entorno preparado, lo primero que debemos hacer es registrarnos en sonatype.
+
+1. Accederemos a la web de incidencias de Sonatype (es un Jira), y nos registraremos como usuario (si no estamos registrados ya).
+
+https://issues.sonatype.org/secure/Dashboard.jspa
+
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164991081-6946097e-e481-4934-9c79-8811b6838d9e.png">
+
+2. Pulsaremos sobre Signup, y comenzaremos el proceso de registro.
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164991181-911b82e6-3f83-41d3-a62f-29ef55ad06ec.png">
+
+3. Una vez acabado el proceso de registro, se nos notifica.
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164991205-174882cc-fec4-409a-b858-0b6f799b664a.png">
+
+4. En el primer inicio de sesión, aparece el asistente típico de Jira, en el que configuraremos varios aspectos del sistema.
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164991244-72e52f09-9f97-4ba0-9fb6-dc895289cc4c.png">
+
+5. Una vez tenemos todo configurado (Idioma y avatar), nos aparece la página principal para Jira, en la que tenemos pocas opciones para elegir.
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164991338-510ebdfd-5180-4055-a0e8-45d6b2e0de8d.png">
+
+6.  Pulsaremos sobre Crear Incidencia, y seleccionaremos la opción **Community Support - Open Source Project Repository Hosting (OSSRH)** y como tipo de incidencia, **New Project**
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164991514-4e862af3-7976-4ab7-bc24-bb1c0947d895.png">
+
+7.  Completaremos **todos* los campos de la incidencia**
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164991815-996c8fcf-c2ae-4f6b-8037-d2502bfc639f.png">
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164991832-033eaf60-8424-4f5a-a6ca-b351f532f12c.png">
+
+Como podemos ver, tenemos un asunto, que será el "título" del proyecto, una breve descripción de lo que vamos a subir y a continuación los campos realmente importantes:
+- **Group Id**: Es la base para los namespaces del proyecto. **MUY IMPORTANTE** si alojamos nuestro proyecto en GitHub, el package de nuestra librería **debe comenzar sí o sí por com.github**, en mi caso, establezco **com.github.afalabarce**
+- **Project URL**: Es la url del proyecto, en mi caso en GitHub.
+- **SCM url**: Es la url para la descarga y clonado del proyecto (normalmente la misma que la de Project URL, terminada en .git).
+- **Username(s)**: Será la lista de usuarios (separados por ,) que podrán publicar artifacts en MavenCentral, normalmente, salvo que sea un proyecto colaborativo, seremos nosotros mismos.
+- **Already Synced to Central**: Puesto que es la primera vez que solicitamos creación de un nuevo proyecto, indicaremos que NO.
+
+8.  Por último, pulsaremos sobre **Crear**, a fin de que se genere la incidencia y nos creen nuestro nuevo proyecto de alojamiento de artifacts. Nos aparece la información necesaria de la incidencia. Cuando esté solucionada, esto es, nuestro proyecto creado, se nos notificará por email.
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164992139-70811e7b-f375-4cbc-b067-e972808656fa.png">
+
+Hasta este punto, tenemos la primera fase de la creación de un proyecto de librería disponible para su uso a través de MavenCentral.
+
