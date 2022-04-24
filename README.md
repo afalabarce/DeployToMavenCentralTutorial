@@ -1,4 +1,4 @@
-# Tutoria de despliegue a MavenCentral / Deploy to MavenCentral Tutorial
+# Tutorial de despliegue a MavenCentral / Deploy to MavenCentral Tutorial
 
 En este repo voy a intentar explicar de la forma más sencilla posible la creación de un proyecto de librería para android enfocado a su despliegue en MavenCentral, a fin de que esté disponible en el buscador de paquetes de Android Studio.
 
