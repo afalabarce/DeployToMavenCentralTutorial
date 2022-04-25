@@ -312,6 +312,12 @@ Al pulsar sobre close, nos pide una descripción.
 Una vez finalizada la publicación, vemos que el estado pasa a Operation in progress, ya solo nos queda esperar.
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/165051599-93e36009-cf84-4eaa-a5d2-e50efbf41979.png">
 
+Y para terminar, una vez todo está correcto, tan sólo debemos publicar la release.
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/165059120-67230194-11a2-41de-901f-c2de9ba55624.png">
+
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/165059233-32491285-28d9-4025-a5b1-5c2376be446f.png">
+
+
 Espero que este tutorial (con todos los posibles errores - que los tendrá seguro -) sirva a la comunidad para extender y proporcionar trabajos que son de sumo interés para todos
 
 Gracias por leer semejante libreto!!
