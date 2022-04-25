@@ -2,6 +2,10 @@
 
 En este repo voy a intentar explicar de la forma más sencilla posible la creación de un proyecto de librería para android enfocado a su despliegue en MavenCentral, a fin de que esté disponible en el buscador de paquetes de Android Studio.
 
+JetBrains, como no, proporciona también un tutorial bastante cómodo de seguir (practicamente lo mismo que esto, pero con menos imágenes)
+https://www.jetbrains.com/help/space/publish-artifacts-to-maven-central.html, aunque es para Spaces
+
+
 Para ganar tiempo, y dejar el entorno preparado, lo primero que debemos hacer es registrarnos en sonatype.
 
 1. Accederemos a la web de incidencias de Sonatype (es un Jira), y nos registraremos como usuario (si no estamos registrados ya).
@@ -71,8 +75,226 @@ A continuación, los pasos a seguir para preparar nuestro artifact disponible en
 **Importante**: Si intentamos iniciar sesión antes de que se nos haya creado nuestro proyecto (la incidencia no se haya dado por finalizada), se mostrará el siguiente error:
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164992552-5b9e5fba-d320-42f6-891b-9bc8d17dc61c.png">
 
+3. Puesto que ya tenemos acceso a Nexus, por ahora lo dejaremos aparcado... y, citando a @mouredev, comenzaremos a picar...
 
-3. 
+4. Debemos crear una firma gpg, ya que será imprescindible para la firma de nuestros artifacts a la hora de subirlos a MavenCentral, para ello vamos a necesitar las utilidades gpg-tools:
+<img width="1137" alt="image" src="https://user-images.githubusercontent.com/103461358/165032204-1c87f19c-7236-4348-a844-ea46f2bb8e4a.png">
+<img width="1137" alt="image" src="https://user-images.githubusercontent.com/103461358/165032245-40389126-0a03-4085-9af3-67803b900fa6.png">
+<img width="1137" alt="image" src="https://user-images.githubusercontent.com/103461358/165032303-ac332201-d51c-40bb-b9b7-b3f6b914ba14.png">
+<img width="1137" alt="image" src="https://user-images.githubusercontent.com/103461358/165032360-015d9b48-5415-45c7-8571-1d7dd6030a0d.png">
+<img width="1137" alt="image" src="https://user-images.githubusercontent.com/103461358/165032655-db37a9d4-2401-4f8e-84f7-7d4f8b78ee2b.png">
 
+5. Una vez creadas las claves gpg, las exportaremos a la carpeta de nuestro proyecto, a fin de tenerlas a la mano...
+<img width="1137" alt="image" src="https://user-images.githubusercontent.com/103461358/165035091-71a00750-1b96-4b69-aa67-50479897b603.png">
+<img width="1137" alt="image" src="https://user-images.githubusercontent.com/103461358/165035314-fc286e8d-be33-4ffa-9edd-c8ffd91090d8.png">
+<img width="1137" alt="image" src="https://user-images.githubusercontent.com/103461358/165035360-d5ce2e93-c726-4994-9a82-b59aa6be834f.png">
 
+```
+ % mkdir gpgKeys
+ % cd gpgKeys 
+ % gpg --output public.pgp --armor --export afalabarce@gmail.com
+ % gpg --export-secret-keys -o private.kbx
+ ```
+ **Es muy importante** (en las capturas dejo la creación "estandar"), crear el fichero de claves privadas con el comando ```gpg --export-secret-keys -o private.kbx```ya que de lo contrario, Android Studio nos dará constantemente un error de que no encuentra la cabecera pgp.
+ 
+6. Crearemos un nuevo proyecto para Android Studio, puesto que no vamos a necesitar Activities (o sí, dependerá de lo que vayamos a desarrollar) crearemos el proyecto **sin actividades**. En mi caso, para este tutorial, voy a crear un proyecto para generar un par de Composables que ya había desarrollado en mi vieja cuenta.
+<img width="1012" alt="image" src="https://user-images.githubusercontent.com/103461358/164994444-1104d349-883c-40d1-b2eb-6de068e53e2c.png">
+<img width="1012" alt="image" src="https://user-images.githubusercontent.com/103461358/164994520-0344bd87-e3e6-49af-a43a-68ac81b91cb0.png">
 
+7. Una vez creado el proyecto, podemos apreciar que Android Studio nos ha creado el proyecto con un módulo de tipo app, esto no nos interesa, por lo que realizaremos las siguientes acciones:
+- Agregar un módulo de tipo Librería.
+- Eliminar el módulo de tipo app.
+<img width="851" alt="image" src="https://user-images.githubusercontent.com/103461358/164994719-c61dcc89-94f3-45dd-bd85-905b32792f6b.png">
+
+Al final, el proyecto se nos debe quedar así...
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164995681-86419c70-3dd9-473c-b1b5-77c5d429bdf4.png">
+
+Como vemos, solo nos queda el proyecto de librería, al que deberemos preparar adecuadamente su build.gradle para las particularidades del proyecto, en mi caso, deberé preparar el build.gradle para que soporte JetpackCompose. En otros casos, se agregarán los implementations necesarios para poder desarrollar la funcionalidad necesaria.
+
+8. A continuación, necesitamos preparar tanto el build.gradle del proyecto, como el fichero local.properties (que se excluye del repo git, ya que llevará claves, etc):
+     - **Fichero local.properties**. En este fichero guardaremos ciertas variables que nos van a permitir configurar los datos de claves para firma y publicación en sonatype. Muestro el contenido de mi local.properties
+```
+     ## This file is automatically generated by Android Studio.
+     # Do not modify this file -- YOUR CHANGES WILL BE ERASED!
+     #
+     # This file should *NOT* be checked into Version Control Systems,
+     # as it contains information specific to your local configuration.
+     #
+     # Location of the SDK. This is only used by Gradle.
+     # For customization when using a Version Control System, please read the
+     # header note.
+    sdk.dir=/Users/afalabarce/Library/Android/sdk
+    signing.keyId = 1234ABCD # Clave en hexadecimal de nuestra clave privada GPG, se obtiene con gpg --list-secret-keys --keyid-format SHORT
+    signing.password = miPasswordGPG
+    signing.secretKeyRingFile = /Users/afalabarce/Desarrollo/AndroidStudioProjects/JetpackComposeComponents/gpgKeys/private.kbx
+    ossrhUsername = miUsuarioSonatype
+    ossrhPassword = miPasswordSonatype
+```
+     - Fichero build.gradle de proyecto
+     Hay que agregar un classpath, a fin de que descargue los plugins para publicación maven.
+     Agregaremos al principio una sección buildScript (si no la tiene)
+```
+     buildscript {
+        dependencies {
+            classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+            // NOTE: Do not place your application dependencies here; they belong
+            // in the individual module build.gradle files
+        }
+     }
+```
+     - Fichero build.gradle para el módulo aar. En este fichero, hay varias secciones a tener muy en cuenta.
+     
+        En este build.gradle tendremos un poco más de trabajo, ya que hay que añadir algunas cosas más...
+        
+        En la sección inicial de plugins, deberemos añadir los plugins necesarios para firmar y publicar en maven, quedando la sección como sigue
+```
+        plugins {
+          id 'com.android.library'
+          id 'org.jetbrains.kotlin.android'
+          id 'maven-publish' // Support for maven publishing artifacts
+          id 'signing' // Support for signing artifacts
+        }
+```
+        
+        Una vez tenemos los plugins preparados, agregaremos lo necesario para que se ejecuten las tareas de firma y publicación. Se ha intentado preparar toda esta sección de código para que no haya que escribir nada y todo proceda de parámetros:
+```
+// Settings for publishing at mavenCentral
+
+ext{
+    publishedGroupId = "io.github.afalabarce"
+    libraryName = "jetpackcompose"
+    artifact = "jetpackcompose"
+    libraryDescription = "Another Project for Jetpack Compose Composable Library"
+    siteUrl = "https://github.com/afalabarce/jetpackcompose"
+    gitUrl = "https://github.com/afalabarce/jetpackcompose.git"
+    libraryVersionId = android.defaultConfig.versionCode
+    libraryVersionCode = android.defaultConfig.versionName
+    developerId = "afalabarce"
+    developerName = "Antonio Fdez. Alabarce"
+    developerEmail = "afalabarce@gmail.com"
+    licenseName = "The Apache Software License, Version 2.0"
+    licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+    allLicenses = ["Apache-2.0"]
+}
+
+task androidSourcesJar(type: Jar) {
+    archiveClassifier = 'sources'
+    from android.sourceSets.main.java.source
+}
+
+artifacts {
+    archives androidSourcesJar
+}
+
+group = publishedGroupId
+version = libraryVersionCode
+
+ext["signing.keyId"] = ''
+ext["signing.password"] = ''
+ext["signing.secretKeyRingFile"] = ''
+ext["ossrhUsername"] = ''
+ext["ossrhPassword"] = ''
+
+File secretPropsFile = project.rootProject.file('local.properties')
+if (secretPropsFile.exists()) {
+    println "Found secret props file, loading props"
+    Properties p = new Properties()
+    p.load(new FileInputStream(secretPropsFile))
+    p.each { name, value ->
+        println "Prop: $name -> $value"
+        ext[name] = value
+    }
+}
+
+signing {
+    sign publishing.publications
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            // The coordinates of the library, being set from variables that
+            // we'll set up in a moment
+            groupId publishedGroupId
+            artifactId artifact
+            version libraryVersionCode
+
+            println "groupId: $publishedGroupId"
+            println "Artifact: $artifact"
+            println "Version: $libraryVersionCode"
+
+            // Two artifacts, the `aar` and the sources
+            artifact("$buildDir/outputs/aar/${project.getName()}-release.aar")
+            artifact androidSourcesJar
+
+            // Self-explanatory metadata for the most part
+            pom {
+                name = artifact
+                description = libraryDescription
+                // If your project has a dedicated site, use its URL here
+                url = gitUrl
+                licenses {
+                    license {
+                        name = licenseName
+                        url = licenseUrl
+                    }
+                }
+                developers {
+                    developer {
+                        id = developerId
+                        name = developerName
+                        email = developerEmail
+                    }
+                }
+                // Version control info, if you're using GitHub, follow the format as seen here
+                scm {
+                    connection = 'scm:git:github.com/afalabarce/jetpackcompose.git'
+                    developerConnection = 'scm:git:ssh://github.com/afalabarce/jetpackcompose.git'
+                    url = 'https://github.com/afalabarce/jetpackcompose/tree/master'
+                }
+                // A slightly hacky fix so that your POM will include any transitive dependencies
+                // that your library builds upon
+                withXml {
+                    def dependenciesNode = asNode().appendNode('dependencies')
+
+                    project.configurations.implementation.allDependencies.each {
+                        def dependencyNode = dependenciesNode.appendNode('dependency')
+                        dependencyNode.appendNode('groupId', it.group)
+                        dependencyNode.appendNode('artifactId', it.name)
+                        dependencyNode.appendNode('version', it.version)
+                    }
+                }
+            }
+        }
+    }
+    repositories {
+        // The repository to publish to, Sonatype/MavenCentral
+        maven {
+            // This is an arbitrary name, you may also use "mavencentral" or
+            // any other name that's descriptive for you
+            name = "sonatype"
+            // these urls depend on the configuration provided to the user by sonatype
+            def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+            // You only need this if you want to publish snapshots, otherwise just set the URL
+            // to the release repo directly
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+
+            // The username and password we've fetched earlier
+            credentials {
+                username ossrhUsername
+                password ossrhPassword
+            }
+        }
+    }
+}
+```
+
+Una vez tenemos todo configurado, ya sólo nos queda publicar en MavenCentral desde las tareas de gradle:
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/165049626-e9ebfa17-25ab-4f8c-8246-85feb74d35a8.png">
+
+Por último, y una vez gradle nos da el ok a la subida, podremos comprobar en nexus que todo ha ido bien:
+
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/165049821-e9008ce7-22f7-4d30-a5b0-df82f4883dce.png">
+
+En este punto, ya tenemos nuestro aar subido a MavenCentral, pero aún no ha sido publicado.
