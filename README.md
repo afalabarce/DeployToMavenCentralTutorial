@@ -94,6 +94,10 @@ A continuación, los pasos a seguir para preparar nuestro artifact disponible en
  % cd gpgKeys 
  % gpg --output public.pgp --armor --export afalabarce@gmail.com
  % gpg --export-secret-keys -o private.kbx
+ Los dos siguientes comandos permiten subir nuestra clave a un keyserver (de ubuntu) utilizado por sonatype para validaciones, sin esto, el proceso de publicación fallará. 1234ABCD es el código de clave pública
+ 
+ % gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 1234ABCD <- sirve para comprobar si la clave existe.
+ % gpg --keyserver hkp://keyserver.ubuntu.com --send-keys 1234ABCD <- Envía la clave.
  ```
  **Es muy importante** (en las capturas dejo la creación "estandar"), crear el fichero de claves privadas con el comando ```gpg --export-secret-keys -o private.kbx```ya que de lo contrario, Android Studio nos dará constantemente un error de que no encuentra la cabecera pgp.
  
