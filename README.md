@@ -321,6 +321,10 @@ El resultado final, nuestro artifact publicado en el repositorio release de mave
 
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/165060477-ffc713ad-0b05-43cd-becb-dbf96a0f0717.png">
 
+**Y tras una ardua espera de unas 3/4 horas...**
+<img width="1009" alt="image" src="https://user-images.githubusercontent.com/103461358/165124042-7a70d2d9-1202-445d-99d1-e7a0a9606e68.png">
+
+Nuestro aporte a la comunidad está disponible para todos! :)
 
 Espero que este tutorial (con todos los posibles errores - que los tendrá seguro -) sirva a la comunidad para extender y proporcionar trabajos que son de sumo interés para todos
 
