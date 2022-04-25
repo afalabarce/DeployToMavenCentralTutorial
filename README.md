@@ -298,3 +298,16 @@ Por último, y una vez gradle nos da el ok a la subida, podremos comprobar en ne
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/165049821-e9008ce7-22f7-4d30-a5b0-df82f4883dce.png">
 
 En este punto, ya tenemos nuestro aar subido a MavenCentral, pero aún no ha sido publicado.
+
+Para finalizar, debemos guardar el stage del artifact, a fin de que se publique...
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/165050582-c93a7125-e2e9-4182-ba0e-85572839be79.png">
+
+Al pulsar sobre close, nos pide una descripción.
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/165050760-4bb227ff-6e70-4668-a550-1e4247c4a2bf.png">
+
+Una vez finalizada la publicación, vemos que el estado pasa a Operation in progress, ya solo nos queda esperar.
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/165051599-93e36009-cf84-4eaa-a5d2-e50efbf41979.png">
+
+Espero que este tutorial (con todos los posibles errores - que los tendrá seguro -) sirva a la comunidad para extender y proporcionar trabajos que son de sumo interés para todos
+
+Gracias por leer semejante libreto!!
