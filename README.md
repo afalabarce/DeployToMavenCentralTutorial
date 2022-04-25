@@ -317,6 +317,10 @@ Y para terminar, una vez todo está correcto, tan sólo debemos publicar la rele
 
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/165059233-32491285-28d9-4025-a5b1-5c2376be446f.png">
 
+El resultado final, nuestro artifact publicado en el repositorio release de mavenCentral, cuestión de tiempo que aparezca en las búsquedas de librerías de Android Studio. Si tenemos prisa, podemos configurar directamente en build.gradle nuestro recien subido artifact.
+
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/165060477-ffc713ad-0b05-43cd-becb-dbf96a0f0717.png">
+
 
 Espero que este tutorial (con todos los posibles errores - que los tendrá seguro -) sirva a la comunidad para extender y proporcionar trabajos que son de sumo interés para todos
 
