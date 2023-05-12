@@ -94,8 +94,9 @@ A continuación, los pasos a seguir para preparar nuestro artifact disponible en
  % cd gpgKeys 
  % gpg --output public.pgp --armor --export afalabarce@gmail.com
  % gpg --export-secret-keys -o private.kbx
- Los dos siguientes comandos permiten subir nuestra clave a un keyserver (de ubuntu) utilizado por sonatype para validaciones, sin esto, el proceso de publicación fallará. 1234ABCD es el código de clave pública
+ Los tres siguientes comandos permiten subir nuestra clave a un keyserver (de ubuntu) utilizado por sonatype para validaciones, sin esto, el proceso de publicación fallará. 1234ABCD es el código de clave pública (SHORT, obtenido con el primero de los tres comandos)
  
+ % gpg --list-secret-keys --keyid-format SHORT
  % gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 1234ABCD <- sirve para comprobar si la clave existe.
  % gpg --keyserver hkp://keyserver.ubuntu.com --send-keys 1234ABCD <- Envía la clave.
  ```
