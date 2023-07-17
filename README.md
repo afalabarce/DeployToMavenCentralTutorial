@@ -46,6 +46,9 @@ Como podemos ver, tenemos un asunto, que será el "título" del proyecto, una br
 **Nota Importante**: Ha cambiado el criterio para asignaciones de GroupIds para GitHub, se nos notifica, por lo que debemos modificar el GroupId de nuestra incidencia, y crear un repo en nuestra cuenta de GitHub con el código que nos propone el bot. En cuanto lo realicemos, la incidencia pasa a abierta.
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164993088-4c8a4efd-412a-4c0d-83aa-1c6ad34fa3ad.png">
 
+**Nota Importante II**: Gracias a la colaboración de @xavijimenezmulet, tenemos también el criterio para creación de proyectos desde BitBucket. Para la creación de proyectos BitBucket deberemos nombrarlos
+con el prefijo **org.bitbucket.<NombreUsuario>**.
+
 9. Una vez el Bot (sí, un bot, antes lo hacía un humano y tardaba un par de días) valida todo, se marca la incidencia como resuelta y ya podremos acceder a nexus.
 <img width="1440" alt="image" src="https://user-images.githubusercontent.com/103461358/164993587-818dc6af-005b-487b-b4d3-48b1a71ab0cc.png">
 
