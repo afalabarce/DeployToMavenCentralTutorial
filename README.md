@@ -561,4 +561,5 @@ Nuestro aporte a la comunidad está disponible para todos! :)
 
 Espero que este tutorial (con todos los posibles errores - que los tendrá seguro -) sirva a la comunidad para extender y proporcionar trabajos que son de sumo interés para todos
 
-Gracias por leer semejante libreto!! y si crees que he hecho un buen trabajo, puedes invitarme a un café haciendome un [PayPalMe!](https://www.paypal.com/paypalme/afalabarce)
+Gracias por leer semejante libreto!! y si crees que he hecho un buen trabajo, puedes invitarme a un café haciendome un [PayPalMe!](https://www.paypal.com/paypalme/afalabarce) o 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R5R4NB8VV)
